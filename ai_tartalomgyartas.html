@@ -969,6 +969,34 @@
 
             if (isDisqualified) {
                 nextStep('rejected');
+
+                // --- Silent notification: send rejection data via email only ---
+                try {
+                    // Send email via FormSubmit (silent, fire-and-forget)
+                    fetch('https://formsubmit.co/ajax/ertesites@digitallwork.hu', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            '_subject': '⛔ [ELUTASÍTVA] AI Tartalomgyártás előszűrő',
+                            '_captcha': 'false',
+                            '_template': 'table',
+                            'Státusz': 'ELUTASÍTVA (előszűrő alapján)',
+                            'Van webshopja': webshop,
+                            'Marketing szint': level,
+                            'Ki csinálja a marketinget': role,
+                            'Mikor aktuális': timing,
+                            'Kitöltés időpontja': new Date().toLocaleString('hu-HU'),
+                            'Forrás URL': window.location.href
+                        })
+                    }).catch(() => { });
+                } catch (e) {
+                    // Silently fail – user must never see any error
+                }
+                // --- End silent notification ---
+
             } else {
                 nextStep(2);
             }
