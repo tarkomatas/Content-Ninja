@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <div id="cookie-text">
                     <p>
                         <strong>Sütiket (cookie-kat) használunk</strong> a legjobb felhasználói élmény és analitikai mérések biztosításához (Meta Pixel).
-                        <a href="https://contentninja.hu/adatkezelesi-tajekoztato/" target="_blank">Adatkezelési tájékoztató</a>
+                        <a href="adatkezeles.html">Adatkezelési tájékoztató</a>
                     </p>
                 </div>
                 <div id="cookie-buttons">
