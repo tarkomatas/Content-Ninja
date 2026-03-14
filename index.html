@@ -239,20 +239,63 @@
                 <a href="#velemenyek" class="nav-link text-sm">Vélemények</a>
             </nav>
 
-            <!-- CTAs -->
+            <!-- CTAs + hamburger -->
             <div class="flex items-center gap-3 shrink-0">
                 <a href="https://app.contentninja.hu" target="_blank"
                     class="cta-secondary hidden sm:inline-flex px-4 py-2 text-sm">
                     <span class="material-symbols-outlined text-[16px]">login</span>
                     Belépek
                 </a>
-                <a href="bemutato.html" class="cta-primary px-4 py-2 text-sm">
+                <a href="bemutato.html" class="cta-primary hidden sm:inline-flex px-4 py-2 text-sm">
+                    <span class="material-symbols-outlined text-[16px]">calendar_month</span>
+                    Bemutatót kérek
+                </a>
+                <!-- Hamburger (mobile only) -->
+                <button id="mobile-menu-btn" class="md:hidden flex items-center justify-center w-10 h-10 rounded-[10px] border border-border text-dark hover:bg-light transition-colors" aria-label="Menü">
+                    <span id="hamburger-icon" class="material-symbols-outlined text-[22px]">menu</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile nav dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-border bg-card px-4 pb-4">
+            <nav class="flex flex-col gap-1 pt-3" aria-label="Mobil navigáció">
+                <a href="#funkciok" class="mobile-nav-link nav-link text-sm px-3 py-2.5 rounded-[8px] hover:bg-light">Funkciók</a>
+                <a href="#hogyan-mukodik" class="mobile-nav-link nav-link text-sm px-3 py-2.5 rounded-[8px] hover:bg-light">Hogyan működik?</a>
+                <a href="#arazas" class="mobile-nav-link nav-link text-sm px-3 py-2.5 rounded-[8px] hover:bg-light">Árazás</a>
+                <a href="#velemenyek" class="mobile-nav-link nav-link text-sm px-3 py-2.5 rounded-[8px] hover:bg-light">Vélemények</a>
+            </nav>
+            <div class="flex flex-col gap-2 mt-4 pt-4 border-t border-border">
+                <a href="https://app.contentninja.hu" target="_blank" class="cta-secondary px-4 py-2.5 text-sm justify-center">
+                    <span class="material-symbols-outlined text-[16px]">login</span>
+                    Belépek az appba
+                </a>
+                <a href="bemutato.html" class="cta-primary px-4 py-2.5 text-sm justify-center">
                     <span class="material-symbols-outlined text-[16px]">calendar_month</span>
                     Bemutatót kérek
                 </a>
             </div>
         </div>
     </header>
+
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('hamburger-icon');
+
+        btn.addEventListener('click', function () {
+            const isOpen = !menu.classList.contains('hidden');
+            menu.classList.toggle('hidden', isOpen);
+            icon.textContent = isOpen ? 'menu' : 'close';
+        });
+
+        document.querySelectorAll('.mobile-nav-link').forEach(function (link) {
+            link.addEventListener('click', function () {
+                menu.classList.add('hidden');
+                icon.textContent = 'menu';
+            });
+        });
+    </script>
 
 
     <!-- ═══════════════════════════════════════
