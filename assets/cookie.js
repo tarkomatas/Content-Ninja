@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const COOKIE_NAME = "digitallwork_cookie_consent_v2";
+    const COOKIE_NAME = "contentninja_cookie_consent_v1";
     const PIXEL_ID = "3857575907663677";
 
     function loadMetaPixel() {
@@ -30,44 +30,100 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function showCookieBanner() {
         const banner = document.createElement("div");
-        // Increased prominence: more padding, larger shadow, distinct border, z-index max
-        banner.className = "fixed bottom-0 left-0 right-0 bg-white border-t-4 border-primary shadow-[0_-20px_60px_rgba(0,0,0,0.15)] z-[99999] p-6 md:p-8 animate-fade-up";
-        banner.style.display = "block";
+        banner.id = "cookie-banner";
+        banner.style.cssText = `
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border-top: 1px solid #e8e8ef;
+            box-shadow: 0 -4px 24px rgba(0,0,0,0.08);
+            z-index: 99999;
+            padding: 20px 24px;
+            animation: cookieSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+        `;
         banner.innerHTML = `
-            <div class="max-w-[1240px] mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-                <div class="space-y-2 text-center md:text-left">
-                    <p class="text-base md:text-lg text-gray-800 font-medium leading-relaxed">
-                        Az oldal <strong>sütiket (cookie-kat)</strong> használ a legjobb felhasználói élmény és a mérések érdekében.
-                    </p>
-                    <p class="text-sm text-gray-500">
-                        A "Elfogadom" gombbal hozzájárulsz a Meta Pixel használatához. 
-                        <a href="https://digitallwork.hu/adatkezelesi-tajekoztato/digitallwork-hu-kft/" target="_blank" class="underline text-primary hover:text-primary-text font-bold">Adatkezelési tájékoztató</a>.
-                    </p>
-                </div>
-                <div class="flex gap-4 shrink-0 w-full md:w-auto">
-                    <button id="cookie-reject" class="flex-1 md:flex-none px-6 py-3 rounded-xl border-2 border-gray-200 text-gray-600 font-bold hover:bg-gray-50 text-base transition-colors">Elutasítom</button>
-                    <button id="cookie-accept" class="flex-1 md:flex-none px-8 py-3 rounded-xl bg-[#8420cf] text-white font-bold hover:scale-105 active:scale-95 text-base shadow-lg shadow-primary/30 transition-all">Elfogadom</button>
-                </div>
-            </div>
             <style>
-                @keyframes fadeUp {
+                @keyframes cookieSlideUp {
                     from { transform: translateY(100%); opacity: 0; }
                     to { transform: translateY(0); opacity: 1; }
                 }
-                .animate-fade-up { animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+                #cookie-banner * { box-sizing: border-box; font-family: 'Inter', sans-serif; }
+                #cookie-accept {
+                    background-color: #6c5ce7;
+                    color: white;
+                    font-weight: 600;
+                    border-radius: 10px;
+                    border: none;
+                    padding: 10px 24px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    transition: background 0.2s ease, transform 0.15s ease;
+                    white-space: nowrap;
+                }
+                #cookie-accept:hover { background-color: #5a4bd6; transform: translateY(-1px); }
+                #cookie-reject {
+                    background-color: transparent;
+                    border: 1.5px solid #6c5ce7;
+                    color: #6c5ce7;
+                    font-weight: 600;
+                    border-radius: 10px;
+                    padding: 10px 20px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    transition: background 0.2s ease, transform 0.15s ease;
+                    white-space: nowrap;
+                }
+                #cookie-reject:hover { background-color: rgba(108,92,231,0.07); transform: translateY(-1px); }
+                #cookie-inner {
+                    max-width: 1200px;
+                    margin: 0 auto;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    gap: 24px;
+                    flex-wrap: wrap;
+                }
+                #cookie-text { flex: 1; min-width: 260px; }
+                #cookie-text p { margin: 0; color: #4a4a68; font-size: 13px; line-height: 1.6; }
+                #cookie-text strong { color: #1e1e2f; }
+                #cookie-text a { color: #6c5ce7; text-decoration: underline; font-weight: 600; }
+                #cookie-buttons { display: flex; gap: 10px; align-items: center; flex-shrink: 0; }
+                #cookie-icon {
+                    width: 36px; height: 36px;
+                    background: rgba(108,92,231,0.1);
+                    border-radius: 50%;
+                    display: flex; align-items: center; justify-content: center;
+                    flex-shrink: 0;
+                    font-size: 18px;
+                }
             </style>
+            <div id="cookie-inner">
+                <div id="cookie-icon">🍪</div>
+                <div id="cookie-text">
+                    <p>
+                        <strong>Sütiket (cookie-kat) használunk</strong> a legjobb felhasználói élmény és analitikai mérések biztosításához (Meta Pixel).
+                        <a href="https://contentninja.hu/adatkezelesi-tajekoztato/" target="_blank">Adatkezelési tájékoztató</a>
+                    </p>
+                </div>
+                <div id="cookie-buttons">
+                    <button id="cookie-reject">Elutasítom</button>
+                    <button id="cookie-accept">Elfogadom</button>
+                </div>
+            </div>
         `;
         document.body.appendChild(banner);
 
         document.getElementById("cookie-accept").addEventListener("click", function () {
             localStorage.setItem(COOKIE_NAME, "true");
             loadMetaPixel();
-            banner.style.display = "none";
+            banner.remove();
         });
 
         document.getElementById("cookie-reject").addEventListener("click", function () {
             localStorage.setItem(COOKIE_NAME, "false");
-            banner.style.display = "none";
+            banner.remove();
         });
     }
 });
