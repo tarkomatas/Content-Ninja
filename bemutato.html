@@ -504,7 +504,7 @@
                     <h2 class="text-3xl md:text-4xl font-bold mb-4">Mit mondanak rólunk ügyfeleink?</h2>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
                     <!-- Testimonial 1 -->
                     <div
                         class="flex flex-col bg-light  p-8 rounded-[16px] border border-border  shadow-card hover:shadow-card-hover transition-all relative">
@@ -514,7 +514,7 @@
                         <div class="relative z-10 flex-1">
                             <p class="text-lg md:text-xl text-body  italic mb-8 font-medium leading-relaxed">
                                 „Rengeteg időt spórol azzal, hogy terméklink alapján magától generál szöveget, képet és
-                                automatikusan posztol is. Nagy segítség!”
+                                automatikusan posztol is. Nagy segítség!"
                             </p>
                         </div>
                         <div class="flex items-center gap-4 mt-auto relative z-10">
@@ -539,7 +539,7 @@
                             <p class="text-lg md:text-xl text-body  italic mb-8 font-medium leading-relaxed">
                                 „Kevés időm jut marketingre, de ezzel mégis tudok rendszeresen posztolni. Tömegesen
                                 generál tartalmakat, témákat is javasol magától, a videós funkciói pedig egyre jobbak.
-                                Komoly időmegtakarítás.”
+                                Komoly időmegtakarítás."
                             </p>
                         </div>
                         <div class="flex items-center gap-4 mt-auto relative z-10">
@@ -550,6 +550,29 @@
                             <div>
                                 <p class="font-bold text-dark  text-base">Luca Márió</p>
                                 <p class="text-sm text-muted font-medium">PanDani.hu Játékbolt és webshop</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Testimonial 3 -->
+                    <div
+                        class="flex flex-col bg-light  p-8 rounded-[16px] border border-border  shadow-card hover:shadow-card-hover transition-all relative">
+                        <div class="mb-4">
+                            <span class="material-symbols-outlined text-primary/10 text-[64px]">format_quote</span>
+                        </div>
+                        <div class="relative z-10 flex-1">
+                            <p class="text-lg md:text-xl text-body  italic mb-8 font-medium leading-relaxed">
+                                „Nagyon tetszik! Végre látom a fényt az alagút végén, így lesznek posztjaim a korábbi semmihez képest :) Egyszóval zseniális! Pedig kerestem már eszközt a problémámra, de nem találtam ilyet..."
+                            </p>
+                        </div>
+                        <div class="flex items-center gap-4 mt-auto relative z-10">
+                            <div
+                                class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-white font-bold text-xl uppercase shadow-card">
+                                ÁK
+                            </div>
+                            <div>
+                                <p class="font-bold text-dark  text-base">Ábrahám Kata</p>
+                                <p class="text-sm text-muted font-medium">Yoga Bazaar webáruház</p>
                             </div>
                         </div>
                     </div>
@@ -1409,12 +1432,12 @@
                     });
 
                     // Always redirect after submission attempt (prevents re-submission)
-                    window.location.href = "ai_tartalomgyartas_koszi.html?lead=1";
+                    window.location.href = "bemutato_koszi.html?lead=1";
 
                 } catch (error) {
                     console.error('Unexpected error:', error);
                     // Still redirect to prevent duplicate submissions
-                    window.location.href = "ai_tartalomgyartas_koszi.html?lead=1";
+                    window.location.href = "bemutato_koszi.html?lead=1";
                 }
             });
         });

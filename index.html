@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Content Ninja – AI Tartalomgyártás Webshopoknak | Automatikus Posztolás</title>
+    <meta name="description"
+        content="A Content Ninja AI-alapú tartalomgyártó eszköz webshopoknak. Automatikusan generál posztokat, képeket és videókat a termékeidből, és publikálja is helyetted. Próbáld ki díjmentesen!" />
+    <meta name="keywords"
+        content="Content Ninja, AI tartalomgyártás, webshop marketing, automatikus posztolás, social media automatizálás, AI influenszer, tartalomnaptár" />
+    <link rel="canonical" href="https://contentninja.hu/" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Content Ninja – AI Tartalomgyártás Webshopoknak" />
+    <meta property="og:description"
+        content="Automatizáld webshopod közösségi média posztolását. AI szöveget ír, képet szerkeszt, videót generál és posztol helyetted." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://contentninja.hu/" />
+    <meta property="og:image" content="assets/logo.webp" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#6c5ce7",
+                        "primary-hover": "#5a4bd6",
+                        dark: "#1e1e2f",
+                        body: "#4a4a68",
+                        light: "#f8f9fb",
+                        card: "#ffffff",
+                        success: "#22c55e",
+                        border: "#e8e8ef",
+                        muted: "#9090a7",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        body: ["Inter", "sans-serif"],
+                    },
+                    boxShadow: {
+                        card: "0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03)",
+                        "card-hover": "0 4px 6px rgba(0,0,0,0.05), 0 10px 24px rgba(0,0,0,0.08)",
+                        "primary-glow": "0 8px 30px rgba(108,92,231,0.18)"
+                    },
+                },
+            },
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #f8f9fb;
+            color: #4a4a68;
+            letter-spacing: -0.01em;
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: #1e1e2f;
+            letter-spacing: -0.02em;
+            font-weight: 700;
+        }
+
+        .cta-primary {
+            background-color: #6c5ce7;
+            color: white;
+            font-weight: 600;
+            border-radius: 10px;
+            border: none;
+            transition: background 0.2s ease, transform 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .cta-primary:hover {
+            background-color: #5a4bd6;
+            transform: translateY(-1px);
+        }
+
+        .cta-secondary {
+            background-color: transparent;
+            border: 1.5px solid #6c5ce7;
+            color: #6c5ce7;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: background 0.2s ease, transform 0.15s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .cta-secondary:hover {
+            background-color: rgba(108, 92, 231, 0.07);
+            transform: translateY(-1px);
+        }
+
+        .cta-outline-white {
+            background-color: transparent;
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            color: white;
+            font-weight: 600;
+            border-radius: 10px;
+            transition: background 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .cta-outline-white:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Nav link */
+        .nav-link {
+            color: #4a4a68;
+            font-weight: 500;
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .nav-link:hover {
+            color: #6c5ce7;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Hero gradient */
+        .hero-gradient {
+            background: linear-gradient(135deg, #f0eeff 0%, #f8f9fb 60%, #eef6ff 100%);
+        }
+
+        /* FAQ accordion */
+        .faq-answer {
+            display: none;
+        }
+
+        .faq-item.open .faq-answer {
+            display: block;
+        }
+
+        .faq-item.open .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-icon {
+            transition: transform 0.2s ease;
+        }
+
+        /* Step connector */
+        .step-connector {
+            position: absolute;
+            top: 24px;
+            left: calc(50% + 48px);
+            width: calc(100% - 96px);
+            height: 2px;
+            background: linear-gradient(90deg, #6c5ce7 0%, #b8adff 100%);
+        }
+
+        /* Pricing highlight */
+        .pricing-featured {
+            box-shadow: 0 8px 30px rgba(108, 92, 231, 0.18);
+        }
+
+        /* Subtle animation */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeUp 0.55s ease-out both;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+
+<body class="bg-light text-dark font-display overflow-x-hidden antialiased">
+
+    <!-- ═══════════════════════════════════════
+     HEADER
+═══════════════════════════════════════ -->
+    <header id="top" class="bg-card border-b border-border sticky top-0 z-50 shadow-card">
+        <div class="max-w-[1200px] mx-auto px-4 md:px-10 py-3 flex items-center justify-between gap-6">
+
+            <!-- Logo -->
+            <a href="index.html" class="shrink-0">
+                <img src="assets/logo.webp" alt="Content Ninja logó" class="h-12 md:h-14 w-auto object-contain" />
+            </a>
+
+            <!-- Desktop nav -->
+            <nav class="hidden md:flex items-center gap-8" aria-label="Főnavigáció">
+                <a href="#funkciok" class="nav-link text-sm">Funkciók</a>
+                <a href="#hogyan-mukodik" class="nav-link text-sm">Hogyan működik?</a>
+                <a href="#arazas" class="nav-link text-sm">Árazás</a>
+                <a href="#velemenyek" class="nav-link text-sm">Vélemények</a>
+            </nav>
+
+            <!-- CTAs -->
+            <div class="flex items-center gap-3 shrink-0">
+                <a href="https://app.contentninja.hu" target="_blank"
+                    class="cta-secondary hidden sm:inline-flex px-4 py-2 text-sm">
+                    <span class="material-symbols-outlined text-[16px]">login</span>
+                    Belépek
+                </a>
+                <a href="bemutato.html" class="cta-primary px-4 py-2 text-sm">
+                    <span class="material-symbols-outlined text-[16px]">calendar_month</span>
+                    Bemutatót kérek
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- ═══════════════════════════════════════
+     HERO
+═══════════════════════════════════════ -->
+    <section id="hero" class="hero-gradient py-20 md:py-28 px-4 md:px-10 overflow-hidden">
+        <div class="max-w-[1200px] mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+                <!-- Left: szöveg -->
+                <div class="flex flex-col gap-7 animate-fade-up">
+                    <div
+                        class="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide w-fit">
+                        <span class="material-symbols-outlined text-[14px]">bolt</span>
+                        AI-alapú webshop marketing
+                    </div>
+
+                    <h1
+                        class="text-4xl md:text-5xl lg:text-[3.2rem] font-extrabold leading-[1.08] tracking-[-0.03em] text-dark">
+                        Automatizáld be<br />webshopod
+                        <span class="text-primary"> közösségi média</span> posztolását
+                    </h1>
+
+                    <p class="text-lg text-body leading-relaxed max-w-[520px]">
+                        A Content Ninja AI szöveget ír, képet szerkeszt,
+                        <strong class="text-dark">videót generál</strong> és posztol is helyetted –
+                        a termékeidből, automatikusan.
+                    </p>
+
+                    <ul class="space-y-3 text-body">
+                        <li class="flex items-start gap-2.5">
+                            <span class="material-symbols-outlined text-primary text-[20px] mt-0.5"
+                                style="font-variation-settings:'FILL' 1">check_circle</span>
+                            <span><strong class="text-dark">Nem kell többé órákat töltened</strong> posztok írásával és
+                                képek szerkesztésével</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="material-symbols-outlined text-primary text-[20px] mt-0.5"
+                                style="font-variation-settings:'FILL' 1">check_circle</span>
+                            <span><strong class="text-dark">Folyamatos, profi jelenlét</strong> a social médiában –
+                                akkor is, ha nincs rá időd</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <span class="material-symbols-outlined text-primary text-[20px] mt-0.5"
+                                style="font-variation-settings:'FILL' 1">check_circle</span>
+                            <span>Több látogató és vásárló, <strong class="text-dark">kevesebb ráfordított
+                                    munkaórával</strong></span>
+                        </li>
+                    </ul>
+
+                    <div class="flex flex-col sm:flex-row gap-3 pt-2">
+                        <a href="bemutato.html" class="cta-primary px-7 py-4 text-base">
+                            <span class="material-symbols-outlined text-[18px]">calendar_month</span>
+                            Díjmentes bemutatót kérek
+                        </a>
+                        <a href="https://app.contentninja.hu" target="_blank" class="cta-secondary px-7 py-4 text-base">
+                            <span class="material-symbols-outlined text-[18px]">login</span>
+                            Belépek az appba
+                        </a>
+                    </div>
+
+                    <!-- Social proof mini -->
+                    <div class="flex items-center gap-3 pt-1">
+                        <div class="flex -space-x-2">
+                            <div
+                                class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold border-2 border-white">
+                                Sz</div>
+                            <div
+                                class="w-8 h-8 rounded-full bg-primary/70 flex items-center justify-center text-white text-xs font-bold border-2 border-white">
+                                L</div>
+                            <div
+                                class="w-8 h-8 rounded-full bg-primary/50 flex items-center justify-center text-white text-xs font-bold border-2 border-white">
+                                ÁK</div>
+                        </div>
+                        <p class="text-sm text-muted"><span class="font-semibold text-dark">26+ webshop</span> már
+                            használja</p>
+                    </div>
+                </div>
+
+                <!-- Right: YouTube embed -->
+                <div class="animate-fade-up delay-200">
+                    <div
+                        class="relative rounded-[20px] overflow-hidden shadow-primary-glow border border-primary/10 bg-dark aspect-video">
+                        <iframe id="hero-video" class="w-full h-full" src="https://youtu.be/g67df7BUczE"
+                            title="Content Ninja – Rendszer bemutató videó" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="text-center text-muted text-xs mt-3">▶ Nézd meg, hogyan működik az AI tartalomgyártás a
+                        gyakorlatban</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+     FUNKCIÓK
+═══════════════════════════════════════ -->
+    <section id="funkciok" class="bg-card py-20 md:py-28 px-4 md:px-10">
+        <div class="max-w-[1200px] mx-auto">
+            <div class="text-center max-w-[700px] mx-auto mb-14">
+                <span class="text-primary font-bold text-sm uppercase tracking-widest block mb-3">Funkciók</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Minden, ami egy webshop marketingjéhez kell</h2>
+                <p class="text-body text-lg">Egy egységes, automatizált rendszer a termékrögzítéstől a vevőszerzésig.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Poszt/kép generálás -->
+                <div
+                    class="bg-light rounded-[16px] border border-border p-7 shadow-card hover:shadow-card-hover transition-all hover:-translate-y-0.5">
+                    <div
+                        class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-5">
+                        <span class="material-symbols-outlined text-[22px]">edit_note</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Poszt- és képgenerálás</h3>
+                    <p class="text-body text-sm leading-relaxed">A termékeidből (kép + leírás) automatikusan vonzó
+                        social media posztot és kreatívot generál – a márkád stílusában, logóval ellátva.</p>
+                </div>
+
+                <!-- Videó tartalom -->
+                <div
+                    class="bg-light rounded-[16px] border border-border p-7 shadow-card hover:shadow-card-hover transition-all hover:-translate-y-0.5">
+                    <div
+                        class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-5">
+                        <span class="material-symbols-outlined text-[22px]">movie_filter</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Videós tartalom</h3>
+                    <p class="text-body text-sm leading-relaxed">Statikus termékfotókból mozgó animációkat vagy akár
+                        rövid, de ütős reklámvideókat generál kameramozgásokkal, effektekkel automatikusan.</p>
+                </div>
+
+                <!-- AI influenszer -->
+                <div
+                    class="bg-light rounded-[16px] border border-border p-7 shadow-card hover:shadow-card-hover transition-all hover:-translate-y-0.5">
+                    <div
+                        class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-5">
+                        <span class="material-symbols-outlined text-[22px]">face</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">AI Influenszer</h3>
+                    <p class="text-body text-sm leading-relaxed">Hozz létre egy brandazonos digitális arcot, aki
+                        0–24-ben fáradhatatlanul gyártja a videós tartalmakat a te webshopod nevében.</p>
+                </div>
+
+                <!-- Automatikus publikálás -->
+                <div
+                    class="bg-light rounded-[16px] border border-border p-7 shadow-card hover:shadow-card-hover transition-all hover:-translate-y-0.5">
+                    <div
+                        class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-5">
+                        <span class="material-symbols-outlined text-[22px]">send</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Automatikus publikálás</h3>
+                    <p class="text-body text-sm leading-relaxed">Webshopodból közvetlenül gyűjt termékadatokat, majd
+                        automatikusan beütemezi és publikálja a kész tartalmakat Facebookra, Instagramra és LinkedInre.
+                    </p>
+                </div>
+
+                <!-- Tartalomnaptár -->
+                <div
+                    class="bg-light rounded-[16px] border border-border p-7 shadow-card hover:shadow-card-hover transition-all hover:-translate-y-0.5">
+                    <div
+                        class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-5">
+                        <span class="material-symbols-outlined text-[22px]">calendar_month</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Tartalomnaptár</h3>
+                    <p class="text-body text-sm leading-relaxed">Vizuális, drag & drop naptár a tervezett posztokhoz.
+                        Lásd át a heti és havi stratégiát – egy kattintással jóváhagyhatod az egész hetet.</p>
+                </div>
+
+                <!-- Brandazonos stílus -->
+                <div
+                    class="bg-light rounded-[16px] border border-border p-7 shadow-card hover:shadow-card-hover transition-all hover:-translate-y-0.5">
+                    <div
+                        class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-5">
+                        <span class="material-symbols-outlined text-[22px]">palette</span>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Brandazonos stílus</h3>
+                    <p class="text-body text-sm leading-relaxed">Az AI megtanulja a márkád hangnemét és vizuális
+                        stílusát. Minden generált tartalom egységes, felismerhető és logózott lesz.</p>
+                </div>
+
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="bemutato.html" class="cta-primary px-8 py-4 text-base">
+                    Megnézem az összes funkciót élesben
+                    <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+     HOGYAN MŰKÖDIK
+═══════════════════════════════════════ -->
+    <section id="hogyan-mukodik" class="bg-light py-20 md:py-28 px-4 md:px-10">
+        <div class="max-w-[1000px] mx-auto">
+            <div class="text-center mb-14">
+                <span class="text-primary font-bold text-sm uppercase tracking-widest block mb-3">Hogyan működik?</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">3 lépés a teljes automatizálásig</h2>
+                <p class="text-body text-lg">Nincs szükség kreatív ügynökségre vagy marketing szakemberre. Az AI elvégzi
+                    a nehéz munkát.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 relative">
+
+                <!-- Step 1 -->
+                <div class="bg-card rounded-[16px] border border-border p-7 shadow-card text-center relative">
+                    <div
+                        class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-extrabold mx-auto mb-5 shadow-primary-glow">
+                        1</div>
+                    <div class="text-3xl mb-4">🛒</div>
+                    <h3 class="font-bold text-lg mb-3">Termék</h3>
+                    <p class="text-body text-sm leading-relaxed">Megadod a termék linkjét vagy URL-jét – a rendszer
+                        automatikusan lekéri a képeket, leírást és árakat a webshopodból.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-card rounded-[16px] border border-border p-7 shadow-card text-center relative">
+                    <div
+                        class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-extrabold mx-auto mb-5 shadow-primary-glow">
+                        2</div>
+                    <div class="text-3xl mb-4">🤖</div>
+                    <h3 class="font-bold text-lg mb-3">AI generál</h3>
+                    <p class="text-body text-sm leading-relaxed">Az AI megírja a posztszöveget, elkészíti a brandazonos
+                        kreatív képet, mozgó animációt vagy videót – a márkád stílusában.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-card rounded-[16px] border border-border p-7 shadow-card text-center">
+                    <div
+                        class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-extrabold mx-auto mb-5 shadow-primary-glow">
+                        3</div>
+                    <div class="text-3xl mb-4">🚀</div>
+                    <h3 class="font-bold text-lg mb-3">Publikál</h3>
+                    <p class="text-body text-sm leading-relaxed">Jóváhagyod (vagy automatikusan megy) – a rendszer
+                        beütemezi és közzéteszi Facebookon, Instagramon és LinkedInen a megadott időpontban.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-10">
+                <a href="bemutato.html" class="cta-primary px-8 py-4 text-base">
+                    Bemutatót kérek – díjmentes
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+     VÉLEMÉNYEK
+═══════════════════════════════════════ -->
+    <section id="velemenyek" class="bg-card py-20 md:py-28 px-4 md:px-10">
+        <div class="max-w-[1200px] mx-auto">
+            <div class="text-center max-w-[700px] mx-auto mb-14">
+                <span class="text-primary font-bold text-sm uppercase tracking-widest block mb-3">Vélemények</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Mit mondanak rólunk ügyfeleink?</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                <!-- T1 -->
+                <div
+                    class="flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all">
+                    <div class="mb-4">
+                        <span class="material-symbols-outlined text-primary/10 text-[56px]"
+                            style="font-variation-settings:'FILL' 1">format_quote</span>
+                    </div>
+                    <div class="flex gap-0.5 mb-4 -mt-2">
+                        <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                            class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                            class="text-yellow-400">★</span>
+                    </div>
+                    <p class="text-body italic mb-6 leading-relaxed flex-1">
+                        „Rengeteg időt spórol azzal, hogy terméklink alapján magától generál szöveget, képet és
+                        automatikusan posztol is. Nagy segítség!"
+                    </p>
+                    <div class="flex items-center gap-3 mt-auto">
+                        <div
+                            class="w-11 h-11 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm uppercase">
+                            Sz</div>
+                        <div>
+                            <p class="font-bold text-dark text-sm">Szabad Mária</p>
+                            <p class="text-xs text-muted">Károlyi-plast webáruház</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- T2 -->
+                <div
+                    class="flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all">
+                    <div class="mb-4">
+                        <span class="material-symbols-outlined text-primary/10 text-[56px]"
+                            style="font-variation-settings:'FILL' 1">format_quote</span>
+                    </div>
+                    <div class="flex gap-0.5 mb-4 -mt-2">
+                        <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                            class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                            class="text-yellow-400">★</span>
+                    </div>
+                    <p class="text-body italic mb-6 leading-relaxed flex-1">
+                        „Kevés időm jut marketingre, de ezzel mégis tudok rendszeresen posztolni. Tömegesen generál
+                        tartalmakat, témákat is javasol magától, a videós funkciói pedig egyre jobbak. Komoly
+                        időmegtakarítás."
+                    </p>
+                    <div class="flex items-center gap-3 mt-auto">
+                        <div
+                            class="w-11 h-11 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm uppercase">
+                            L</div>
+                        <div>
+                            <p class="font-bold text-dark text-sm">Luca Márió</p>
+                            <p class="text-xs text-muted">PanDani.hu Játékbolt és webshop</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- T3 -->
+                <div
+                    class="flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all">
+                    <div class="mb-4">
+                        <span class="material-symbols-outlined text-primary/10 text-[56px]"
+                            style="font-variation-settings:'FILL' 1">format_quote</span>
+                    </div>
+                    <div class="flex gap-0.5 mb-4 -mt-2">
+                        <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                            class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                            class="text-yellow-400">★</span>
+                    </div>
+                    <p class="text-body italic mb-6 leading-relaxed flex-1">
+                        „Nagyon tetszik! Végre látom a fényt az alagút végén, így lesznek posztjaim a korábbi semmihez
+                        képest :) Egyszóval zseniális! Pedig kerestem már eszközt a problémámra, de nem találtam
+                        ilyet..."
+                    </p>
+                    <div class="flex items-center gap-3 mt-auto">
+                        <div
+                            class="w-11 h-11 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm uppercase">
+                            ÁK</div>
+                        <div>
+                            <p class="font-bold text-dark text-sm">Ábrahám Kata</p>
+                            <p class="text-xs text-muted">Yoga Bazaar webáruház</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+     ÁRAZÁS
+═══════════════════════════════════════ -->
+    <section id="arazas" class="bg-light py-20 md:py-28 px-4 md:px-10">
+        <div class="max-w-[900px] mx-auto">
+            <div class="text-center mb-14">
+                <span class="text-primary font-bold text-sm uppercase tracking-widest block mb-3">Árazás</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Átlátható, fix havidíj</h2>
+                <p class="text-body text-lg">Csatlakozz az elsők között és zsebeld be az induló kedvezményt.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+
+                <!-- Standard -->
+                <div class="bg-card rounded-[16px] border border-border p-8 shadow-card">
+                    <h3 class="text-xl font-bold mb-1 text-dark">Standard előfizetés</h3>
+                    <p class="text-muted text-sm mb-6">A teljes automata marketing csomag</p>
+                    <div class="flex items-baseline gap-1 mb-6 pb-6 border-b border-border">
+                        <span class="text-4xl font-extrabold text-dark">19.990</span>
+                        <span class="text-xl font-bold text-dark">Ft</span>
+                        <span class="text-muted text-sm">+ÁFA / hó</span>
+                    </div>
+                    <ul class="space-y-3.5 mb-8">
+                        <li class="flex items-center gap-3">
+                            <div class="w-5 h-5 rounded-full bg-success/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-success text-[12px]">check</span>
+                            </div>
+                            <span class="text-body text-sm">Automata termékleírás generálás</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-5 h-5 rounded-full bg-success/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-success text-[12px]">check</span>
+                            </div>
+                            <span class="text-body text-sm">Automatikus social media kreatívok</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-5 h-5 rounded-full bg-success/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-success text-[12px]">check</span>
+                            </div>
+                            <span class="text-body text-sm">Teljesen automatizált publikálás</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-5 h-5 rounded-full bg-success/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-success text-[12px]">check</span>
+                            </div>
+                            <span class="text-body text-sm">Márkahű stílus és hangnem</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-5 h-5 rounded-full bg-success/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-success text-[12px]">check</span>
+                            </div>
+                            <span class="text-body text-sm">Marketing naptár és időzítés</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-5 h-5 rounded-full bg-success/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-success text-[12px]">check</span>
+                            </div>
+                            <span class="text-body text-sm">Folyamatos fejlesztés és support</span>
+                        </li>
+                    </ul>
+                    <a href="bemutato.html" class="cta-secondary w-full py-3 text-sm justify-center">
+                        Bemutatót kérek
+                    </a>
+                </div>
+
+                <!-- Induló kedvezmény -->
+                <div class="bg-card rounded-[16px] border-2 border-primary p-8 pricing-featured relative">
+                    <div
+                        class="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-4 py-1.5 rounded-bl-[14px] uppercase tracking-wide">
+                        Korai regisztráció
+                    </div>
+                    <h3 class="text-xl font-bold mb-1 text-dark">Induló kedvezmény</h3>
+                    <p class="text-muted text-sm mb-6">Csak az első 40 webshopnak</p>
+                    <div class="flex items-baseline gap-1 mb-1">
+                        <span class="text-4xl font-extrabold text-primary">9.990</span>
+                        <span class="text-xl font-bold text-dark">Ft</span>
+                        <span class="text-muted text-sm">+ÁFA</span>
+                    </div>
+                    <p class="text-muted text-xs mb-6 pb-6 border-b border-border">az első hónapban, utána standard ár
+                    </p>
+                    <ul class="space-y-3.5 mb-8">
+                        <li class="flex items-center gap-3">
+                            <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-primary text-[12px]">check</span>
+                            </div>
+                            <span class="text-body text-sm">Minden funkció, mint a standard csomagban</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-primary text-[12px]">check</span>
+                            </div>
+                            <span class="text-body text-sm">Extra visszajelzés és szorosabb kapcsolat</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-primary text-[12px]">check</span>
+                            </div>
+                            <span class="text-body text-sm">Előny az új funkcióknál</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <div class="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                                <span class="material-symbols-outlined text-primary text-[12px]">check</span>
+                            </div>
+                            <span class="text-body text-sm">Egyedi igények gyors beépítése</span>
+                        </li>
+                    </ul>
+                    <a href="bemutato.html" class="cta-primary w-full py-3 text-sm justify-center">
+                        Kérem a kedvezményt
+                        <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+     FAQ
+═══════════════════════════════════════ -->
+    <section id="faq" class="bg-card py-20 md:py-28 px-4 md:px-10">
+        <div class="max-w-[800px] mx-auto">
+            <div class="text-center mb-14">
+                <span class="text-primary font-bold text-sm uppercase tracking-widest block mb-3">GYIK</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Gyakran ismételt kérdések</h2>
+            </div>
+
+            <div class="space-y-3" id="faq-list">
+
+                <div class="faq-item bg-light rounded-[12px] border border-border overflow-hidden">
+                    <button
+                        class="w-full flex items-center justify-between p-5 text-left font-semibold text-dark text-base gap-4"
+                        onclick="toggleFaq(this)">
+                        Mi az a Content Ninja?
+                        <span class="material-symbols-outlined faq-icon text-primary shrink-0 text-[20px]">add</span>
+                    </button>
+                    <div class="faq-answer px-5 pb-5 text-body text-sm leading-relaxed">
+                        A Content Ninja egy AI-alapú tartalomgyártó és publikáló platform, amelyet kifejezetten
+                        webshopok számára fejlesztettünk. Automatikusan generál social media posztokat, képeket és
+                        videókat a termékeidből, majd ezeket a megadott platformokon (Facebook, Instagram, LinkedIn)
+                        közzé is teszi. Nincs szükség kreatív csapatra, marketing ügynökségre vagy manuális posztolásra.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-light rounded-[12px] border border-border overflow-hidden">
+                    <button
+                        class="w-full flex items-center justify-between p-5 text-left font-semibold text-dark text-base gap-4"
+                        onclick="toggleFaq(this)">
+                        Hogyan működik a Content Ninja AI tartalomgyártás?
+                        <span class="material-symbols-outlined faq-icon text-primary shrink-0 text-[20px]">add</span>
+                    </button>
+                    <div class="faq-answer px-5 pb-5 text-body text-sm leading-relaxed">
+                        A rendszer közvetlenül a webshopodhoz kapcsolódik (Unas integrációval vagy bármilyen webshop-hoz
+                        sitemap-on keresztül), és
+                        automatikusan lekéri a termékadatokat – leírást, képeket, árakat. Ezekből az AI szöveget ír,
+                        brandazonos képet és videót szerkeszt, majd az általad jóváhagyott ütemezés szerint publikálja a
+                        posztokat. Az egész folyamat teljesen automatizálható.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-light rounded-[12px] border border-border overflow-hidden">
+                    <button
+                        class="w-full flex items-center justify-between p-5 text-left font-semibold text-dark text-base gap-4"
+                        onclick="toggleFaq(this)">
+                        Milyen platformokra tud posztolni a Content Ninja?
+                        <span class="material-symbols-outlined faq-icon text-primary shrink-0 text-[20px]">add</span>
+                    </button>
+                    <div class="faq-answer px-5 pb-5 text-body text-sm leading-relaxed">
+                        Jelenleg a Facebook, Instagram és LinkedIn platformokra tud automatikusan publikálni. A rendszer
+                        folyamatos fejlesztés alatt áll, és hamarosan TikTok és Pinterest integrációt is tervezünk.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-light rounded-[12px] border border-border overflow-hidden">
+                    <button
+                        class="w-full flex items-center justify-between p-5 text-left font-semibold text-dark text-base gap-4"
+                        onclick="toggleFaq(this)">
+                        Kell-e marketing tudás a használatához?
+                        <span class="material-symbols-outlined faq-icon text-primary shrink-0 text-[20px]">add</span>
+                    </button>
+                    <div class="faq-answer px-5 pb-5 text-body text-sm leading-relaxed">
+                        Nem, a Content Ninja pont azoknak készült, akiknek nincs ideje vagy háttértudása a marketing
+                        menedzsmenthez. Az AI elvégzi a szakértők munkáját: szöveget ír, képet szerkeszt, ütemezi a
+                        posztokat. Neked csak a termékeiddel kell foglalkoznod.
+                    </div>
+                </div>
+
+                <div class="faq-item bg-light rounded-[12px] border border-border overflow-hidden">
+                    <button
+                        class="w-full flex items-center justify-between p-5 text-left font-semibold text-dark text-base gap-4"
+                        onclick="toggleFaq(this)">
+                        Mennyibe kerül a Content Ninja előfizetés?
+                        <span class="material-symbols-outlined faq-icon text-primary shrink-0 text-[20px]">add</span>
+                    </button>
+                    <div class="faq-answer px-5 pb-5 text-body text-sm leading-relaxed">
+                        A standard előfizetés havi 19.990 Ft + ÁFA, ami tartalmaz minden funkciót. Az első 40 webshopnak
+                        korai regisztráló kedvezmény érhető el: az első hónapban csak 9.990 Ft + ÁFA. A pontos
+                        részletekért kérj egy díjmentes bemutatót!
+                    </div>
+                </div>
+
+                <div class="faq-item bg-light rounded-[12px] border border-border overflow-hidden">
+                    <button
+                        class="w-full flex items-center justify-between p-5 text-left font-semibold text-dark text-base gap-4"
+                        onclick="toggleFaq(this)">
+                        Megőrzi a Content Ninja a márkám hangnemét és stílusát?
+                        <span class="material-symbols-outlined faq-icon text-primary shrink-0 text-[20px]">add</span>
+                    </button>
+                    <div class="faq-answer px-5 pb-5 text-body text-sm leading-relaxed">
+                        Igen, ez az egyik legfontosabb funkciója. A beállítás során megadod a márkád hangnemét (pl.
+                        tegeződő, barátságos vs. prémium, magázódó), vizuális stílusát és logódat. Az AI ezeket
+                        megtanulja, és minden generált tartalom – szöveg és kép egyaránt – egységes, brandazonos lesz.
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+     CTA SÁVE
+═══════════════════════════════════════ -->
+    <section class="bg-primary py-16 md:py-20 px-4 md:px-10">
+        <div class="max-w-[700px] mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-white mb-4 tracking-[-0.02em]">
+                Készen állsz, hogy az AI gyártsa a tartalmaidat?
+            </h2>
+            <p class="text-white/80 text-lg mb-8">
+                Kérj egy díjmentes, 20 perces online bemutatót – és nézd meg élesben, hogyan működik a saját webshopod
+                példáin.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="bemutato.html" class="cta-primary bg-white text-primary hover:bg-white/90 px-8 py-4 text-base">
+                    <span class="material-symbols-outlined text-[18px]">calendar_month</span>
+                    Bemutatót kérek – díjmentes
+                </a>
+                <a href="https://app.contentninja.hu" target="_blank" class="cta-outline-white px-8 py-4 text-base">
+                    <span class="material-symbols-outlined text-[18px]">login</span>
+                    Belépek az appba
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════ -->
+    <footer class="bg-dark text-muted py-14 px-4 md:px-10">
+        <div class="max-w-[1200px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+
+                <!-- Brand -->
+                <div>
+                    <div class="bg-white p-3 rounded-[10px] inline-block mb-4">
+                        <img src="assets/logo.webp" alt="Content Ninja logó" class="h-9 w-auto object-contain" />
+                    </div>
+                    <p class="text-sm leading-relaxed max-w-[280px]">
+                        Egy AI-alapú rendszer, ami a webshopod nevében készít marketing tartalmakat – automatikusan,
+                        nonstop.
+                    </p>
+                </div>
+
+                <!-- Linkek -->
+                <div>
+                    <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wide">Jogi információk</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="https://contentninja.hu/adatkezelesi-tajekoztato/" target="_blank"
+                                class="hover:text-white transition-colors">Adatkezelési tájékoztató</a></li>
+                        <li><a href="https://contentninja.hu/impresszum/" target="_blank"
+                                class="hover:text-white transition-colors">Impresszum</a></li>
+                    </ul>
+                </div>
+
+                <!-- CTAs -->
+                <div>
+                    <h4 class="text-white font-bold mb-4 text-sm uppercase tracking-wide">Kezdj el most</h4>
+                    <div class="flex flex-col gap-3">
+                        <a href="bemutato.html"
+                            class="cta-primary bg-primary hover:bg-primary-hover px-5 py-2.5 text-sm w-fit">
+                            <span class="material-symbols-outlined text-[16px]">calendar_month</span>
+                            Bemutatót kérek
+                        </a>
+                        <a href="https://app.contentninja.hu" target="_blank"
+                            class="cta-outline-white px-5 py-2.5 text-sm w-fit">
+                            <span class="material-symbols-outlined text-[16px]">login</span>
+                            Belépek
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/10 pt-6 text-center text-xs">
+                <p>Copyright © contentninja.hu | 2026</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Structured Data – FAQ -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Mi az a Content Ninja?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A Content Ninja egy AI-alapú tartalomgyártó és publikáló platform, amelyet kifejezetten webshopok számára fejlesztettünk. Automatikusan generál social media posztokat, képeket és videókat a termékeidből, majd ezeket Facebookon, Instagramon és LinkedInen közzé is teszi."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Mennyibe kerül a Content Ninja előfizetés?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A standard előfizetés havi 19.990 Ft + ÁFA. Az első 40 webshopnak korai regisztráló kedvezmény: az első hónapban csak 9.990 Ft + ÁFA."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Kell-e marketing tudás a Content Ninja használatához?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nem, a Content Ninja pont azoknak készült, akiknek nincs ideje vagy háttértudása a marketing menedzsmenthez. Az AI elvégzi a szakértők munkáját automatikusan."
+      }
+    }
+  ]
+}
+</script>
+
+    <!-- FAQ toggle JS -->
+    <script>
+        function toggleFaq(btn) {
+            const item = btn.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
+    </script>
+
+    <script src="assets/cookie.js"></script>
+</body>
+
+</html>
