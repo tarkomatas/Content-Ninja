@@ -416,17 +416,76 @@
                                     </div>
                                 </div>
 
-                                <!-- Disqualification Screen -->
+                                <!-- Disqualification Screen (hard reject) -->
                                 <div class="form-step" data-step="rejected">
                                     <div class="text-center py-6 space-y-4">
-                                        <div
-                                            class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto">
-                                            <span class="material-symbols-outlined text-primary text-3xl">info</span>
-                                        </div>
                                         <h4 class="text-xl font-bold text-dark">Köszönjük az érdeklődésedet!</h4>
                                         <p class="text-body leading-relaxed max-w-[400px] mx-auto">
                                             A megadott adatok alapján úgy látjuk, hogy nem lenne a platformunk megfelelő
                                             számomdra. Így nem is szeretnénk az idődet húzni, megértésed köszönjük!
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <!-- Soft Reject Screen (timing not ideal) -->
+                                <div class="form-step" data-step="soft-reject">
+                                    <div class="space-y-5">
+                                        <div class="text-center space-y-3">
+                                            <h4 class="text-xl font-bold text-dark">Köszönjük az érdeklődésedet!</h4>
+                                            <p class="text-body leading-relaxed text-sm">
+                                                Mi most olyan ügyfeleket keresünk, akik <strong>azonnal használatba
+                                                    tudják venni</strong> a rendszert – ezért a bemutatót jelenleg csak
+                                                számukra tudjuk vállalni.
+                                            </p>
+                                            <p class="text-body leading-relaxed text-sm">
+                                                De maradjunk kapcsolatban! Add meg az email címed, és küldünk egy
+                                                <strong>bemutató videót</strong> a rendszerről, valamint értesítünk az
+                                                aktuális újdonságokról.
+                                            </p>
+                                        </div>
+                                        <div>
+                                            <label class="block text-sm font-bold text-body mb-1">Email cím</label>
+                                            <input type="email" id="softRejectEmail"
+                                                class="w-full rounded-lg border-border focus:border-primary focus:ring-primary shadow-card hover:shadow-card-hover transition-all"
+                                                placeholder="pl. janos@ceg.hu">
+                                        </div>
+                                        <div class="flex items-start gap-2 text-xs text-muted">
+                                            <input type="checkbox" id="softRejectPrivacy"
+                                                class="mt-1 rounded text-primary focus:ring-primary">
+                                            <label for="softRejectPrivacy">
+                                                Az <a href="adatkezeles.html" target="_blank"
+                                                    class="underline hover:text-primary">Adatkezelési Tájékoztatóban</a>
+                                                foglaltakat elolvastam, megértettem és tudomásul vettem.
+                                            </label>
+                                        </div>
+                                        <div class="flex items-start gap-2 text-xs text-muted">
+                                            <input type="checkbox" id="softRejectNewsletter"
+                                                class="mt-1 rounded text-primary focus:ring-primary">
+                                            <label for="softRejectNewsletter">
+                                                Érdekelnek hasonló izgalmas tartalmak! Feliratkozom a hírlevélre.
+                                                (<a href="adatkezeles.html"
+                                                    class="underline hover:text-primary">Adatkezelési tájékoztató</a>)
+                                            </label>
+                                        </div>
+                                        <button type="button" onclick="submitSoftReject()"
+                                            class="w-full flex items-center justify-center rounded-lg h-12 cta-primary transition-all hover:brightness-95">
+                                            Küldj nekem bemutató videót!
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Soft Reject Thank You Screen -->
+                                <div class="form-step" data-step="soft-reject-thanks">
+                                    <div class="text-center py-6 space-y-4">
+                                        <div
+                                            class="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto">
+                                            <span
+                                                class="material-symbols-outlined text-success text-3xl">check_circle</span>
+                                        </div>
+                                        <h4 class="text-xl font-bold text-dark">Megkaptuk!</h4>
+                                        <p class="text-body leading-relaxed max-w-[400px] mx-auto">
+                                            Hamarosan elküldjük a bemutató videót és az aktuális újdonságokat. Köszönjük
+                                            az érdeklődésedet!
                                         </p>
                                     </div>
                                 </div>
@@ -458,9 +517,8 @@
                                             <input type="checkbox" id="privacy" required
                                                 class="mt-1 rounded text-primary focus:ring-primary">
                                             <label for="privacy">
-                                                Az <a
-                                                    href="adatkezeles.html"
-                                                    target="_blank" class="underline hover:text-primary">Adatkezelési
+                                                Az <a href="adatkezeles.html" target="_blank"
+                                                    class="underline hover:text-primary">Adatkezelési
                                                     Tájékoztatóban</a> foglaltakat elolvastam, megértettem és tudomásul
                                                 vettem.
                                             </label>
@@ -471,7 +529,8 @@
                                                 class="mt-1 rounded text-primary focus:ring-primary">
                                             <label for="newsletter">
                                                 Érdekelnek hasonló izgalmas tartalmak! Feliratkozom a hírlevélre.
-                                                (<a href="adatkezeles.html" class="underline hover:text-primary">Adatkezelési tájékoztató</a>)
+                                                (<a href="adatkezeles.html"
+                                                    class="underline hover:text-primary">Adatkezelési tájékoztató</a>)
                                             </label>
                                         </div>
 
@@ -504,18 +563,25 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
                     <!-- Testimonial 1 -->
-                    <div class="flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all">
+                    <div
+                        class="flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all">
                         <div class="mb-4">
-                            <span class="material-symbols-outlined text-primary/10 text-[56px]" style="font-variation-settings:'FILL' 1">format_quote</span>
+                            <span class="material-symbols-outlined text-primary/10 text-[56px]"
+                                style="font-variation-settings:'FILL' 1">format_quote</span>
                         </div>
                         <div class="flex gap-0.5 mb-4 -mt-2">
-                            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
+                            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                                class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                                class="text-yellow-400">★</span>
                         </div>
                         <p class="text-body italic mb-6 leading-relaxed flex-1">
-                            „Rengeteg időt spórol azzal, hogy terméklink alapján magától generál szöveget, képet és automatikusan posztol is. Nagy segítség!"
+                            „Rengeteg időt spórol azzal, hogy terméklink alapján magától generál szöveget, képet és
+                            automatikusan posztol is. Nagy segítség!"
                         </p>
                         <div class="flex items-center gap-3 mt-auto">
-                            <div class="w-11 h-11 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm uppercase">Sz</div>
+                            <div
+                                class="w-11 h-11 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm uppercase">
+                                Sz</div>
                             <div>
                                 <p class="font-bold text-dark text-sm">Szabad Mária</p>
                                 <p class="text-xs text-muted">Károlyi-plast webáruház</p>
@@ -524,18 +590,26 @@
                     </div>
 
                     <!-- Testimonial 2 -->
-                    <div class="flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all">
+                    <div
+                        class="flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all">
                         <div class="mb-4">
-                            <span class="material-symbols-outlined text-primary/10 text-[56px]" style="font-variation-settings:'FILL' 1">format_quote</span>
+                            <span class="material-symbols-outlined text-primary/10 text-[56px]"
+                                style="font-variation-settings:'FILL' 1">format_quote</span>
                         </div>
                         <div class="flex gap-0.5 mb-4 -mt-2">
-                            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
+                            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                                class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                                class="text-yellow-400">★</span>
                         </div>
                         <p class="text-body italic mb-6 leading-relaxed flex-1">
-                            „Kevés időm jut marketingre, de ezzel mégis tudok rendszeresen posztolni. Tömegesen generál tartalmakat, témákat is javasol magától, a videós funkciói pedig egyre jobbak. Komoly időmegtakarítás."
+                            „Kevés időm jut marketingre, de ezzel mégis tudok rendszeresen posztolni. Tömegesen generál
+                            tartalmakat, témákat is javasol magától, a videós funkciói pedig egyre jobbak. Komoly
+                            időmegtakarítás."
                         </p>
                         <div class="flex items-center gap-3 mt-auto">
-                            <div class="w-11 h-11 rounded-full bg-primary/70 flex items-center justify-center text-white font-bold text-sm uppercase">L</div>
+                            <div
+                                class="w-11 h-11 rounded-full bg-primary/70 flex items-center justify-center text-white font-bold text-sm uppercase">
+                                L</div>
                             <div>
                                 <p class="font-bold text-dark text-sm">Luca Márió</p>
                                 <p class="text-xs text-muted">PanDani.hu Játékbolt és webshop</p>
@@ -544,18 +618,26 @@
                     </div>
 
                     <!-- Testimonial 3 -->
-                    <div class="flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all">
+                    <div
+                        class="flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all">
                         <div class="mb-4">
-                            <span class="material-symbols-outlined text-primary/10 text-[56px]" style="font-variation-settings:'FILL' 1">format_quote</span>
+                            <span class="material-symbols-outlined text-primary/10 text-[56px]"
+                                style="font-variation-settings:'FILL' 1">format_quote</span>
                         </div>
                         <div class="flex gap-0.5 mb-4 -mt-2">
-                            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
+                            <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                                class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
+                                class="text-yellow-400">★</span>
                         </div>
                         <p class="text-body italic mb-6 leading-relaxed flex-1">
-                            „Nagyon tetszik! Végre látom a fényt az alagút végén, így lesznek posztjaim a korábbi semmihez képest :) Egyszóval zseniális! Pedig kerestem már eszközt a problémámra, de nem találtam ilyet..."
+                            „Nagyon tetszik! Végre látom a fényt az alagút végén, így lesznek posztjaim a korábbi
+                            semmihez képest :) Egyszóval zseniális! Pedig kerestem már eszközt a problémámra, de nem
+                            találtam ilyet..."
                         </p>
                         <div class="flex items-center gap-3 mt-auto">
-                            <div class="w-11 h-11 rounded-full bg-primary/50 flex items-center justify-center text-white font-bold text-sm uppercase">ÁK</div>
+                            <div
+                                class="w-11 h-11 rounded-full bg-primary/50 flex items-center justify-center text-white font-bold text-sm uppercase">
+                                ÁK</div>
                             <div>
                                 <p class="font-bold text-dark text-sm">Ábrahám Kata</p>
                                 <p class="text-xs text-muted">Yoga Bazaar webáruház</p>
@@ -1255,6 +1337,9 @@
             }
         }
 
+        // Store qualifying data for use in soft reject submission
+        let _qualifyData = {};
+
         function qualifyAndNext() {
             const webshop = document.getElementById('hasWebshop').value;
             const level = document.getElementById('marketingLevel').value;
@@ -1267,26 +1352,28 @@
                 return;
             }
 
-            // Check disqualifying conditions
-            const isDisqualified =
+            // Store for later use
+            _qualifyData = { webshop, level, role, timing };
+
+            // Hard disqualify: no webshop OR agency/internal team
+            const isHardRejected =
                 webshop === 'Nem, más típusú vállalkozásom van' ||
                 role === 'Belsős marketing csapat' ||
-                role === 'Ügynökség' ||
+                role === 'Ügynökség';
+
+            // Soft reject: timing not ideal (but otherwise OK)
+            const isSoftRejected =
                 timing === '2-3 hónapon belül' ||
                 timing === 'Még csak érdeklődöm';
 
-            if (isDisqualified) {
+            if (isHardRejected) {
                 nextStep('rejected');
 
                 // --- Silent notification: send rejection data via email only ---
                 try {
-                    // Send email via FormSubmit (silent, fire-and-forget)
                     fetch('https://formsubmit.co/ajax/ertesites@contentninja.hu', {
                         method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                         body: JSON.stringify({
                             '_subject': '⛔ [ELUTASÍTVA] AI Tartalomgyártás előszűrő',
                             '_captcha': 'false',
@@ -1300,14 +1387,78 @@
                             'Forrás URL': window.location.href
                         })
                     }).catch(() => { });
-                } catch (e) {
-                    // Silently fail – user must never see any error
-                }
+                } catch (e) { }
                 // --- End silent notification ---
+
+            } else if (isSoftRejected) {
+                nextStep('soft-reject');
 
             } else {
                 nextStep(2);
             }
+        }
+
+        async function submitSoftReject() {
+            const email = document.getElementById('softRejectEmail').value.trim();
+            if (!email || !email.includes('@')) {
+                alert('Kérlek adj meg egy érvényes email címet!');
+                return;
+            }
+
+            const privacy = document.getElementById('softRejectPrivacy');
+            if (!privacy.checked) {
+                alert('Kérlek fogadd el az adatkezelési tájékoztatót!');
+                return;
+            }
+
+            const newsletterChecked = document.getElementById('softRejectNewsletter').checked;
+
+            const btn = event.target;
+            btn.innerHTML = 'Küldés...';
+            btn.disabled = true;
+
+            const payload = {
+                submission_date: new Date().toISOString(),
+                email: email,
+                hirlevel_feliratkozas: newsletterChecked ? 'Igen' : 'Nem',
+                has_webshop: _qualifyData.webshop || '',
+                marketing_level: _qualifyData.level || '',
+                marketing_role: _qualifyData.role || '',
+                timing: _qualifyData.timing || '',
+                source_url: window.location.href
+            };
+
+            try {
+                await Promise.allSettled([
+                    // Webhook to Make.com (soft reject – separate webhook)
+                    fetch('https://hook.eu1.make.com/dbd8h6ba533577o15xq36mia3t8y5z6l', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    }),
+                    // Email notification
+                    fetch('https://formsubmit.co/ajax/ertesites@contentninja.hu', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify({
+                            '_subject': '⏳ [SOFT REJECT – Videó kérés] AI Tartalomgyártás',
+                            '_captcha': 'false',
+                            '_template': 'table',
+                            'Státusz': 'Soft reject – bemutató videót kért',
+                            'Email': email,
+                            'Hírlevél feliratkozás': newsletterChecked ? 'Igen' : 'Nem',
+                            'Van webshopja': _qualifyData.webshop || '',
+                            'Marketing szint': _qualifyData.level || '',
+                            'Ki csinálja a marketinget': _qualifyData.role || '',
+                            'Mikor aktuális': _qualifyData.timing || '',
+                            'Kitöltés időpontja': new Date().toLocaleString('hu-HU'),
+                            'Forrás URL': window.location.href
+                        })
+                    })
+                ]);
+            } catch (e) { }
+
+            nextStep('soft-reject-thanks');
         }
 
         document.addEventListener('DOMContentLoaded', function () {
