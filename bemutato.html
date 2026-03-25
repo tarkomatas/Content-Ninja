@@ -254,7 +254,7 @@
 
         <!-- 1. Hero + Jelentkezési űrlap -->
         <section id="hero"
-            class="relative flex flex-col justify-center py-[80px] md:py-24 px-4 md:px-10 lg:px-40       dark: overflow-hidden">
+            class="relative flex flex-col justify-center py-10 md:py-24 px-4 md:px-10 lg:px-40       dark: overflow-hidden">
             <!-- Decorative blobs -->
             <div
                 class="hero-blob absolute top-[-80px] right-[-60px] w-[420px] h-[420px] r rounded-full  pointer-events-none">
@@ -344,7 +344,7 @@
                                 bemutatóra
                             </h3>
                             <div
-                                class="flex items-center gap-2.5 justify-center dark: dark: border border-border  rounded-lg px-4 py-3 mb-6">
+                                class="flex items-center gap-2.5 justify-center dark: dark: border border-border  rounded-lg px-4 py-3 mb-3">
                                 <span class="material-symbols-outlined text-primary text-[20px] shrink-0">info</span>
                                 <p class="text-sm text-body "><strong class="font-bold text-dark ">Közvetlen
                                         kipróbálásra nincs
@@ -449,7 +449,7 @@
                                                 class="w-full rounded-lg border-border focus:border-primary focus:ring-primary shadow-card hover:shadow-card-hover transition-all"
                                                 placeholder="pl. janos@ceg.hu">
                                         </div>
-                                        <div class="flex items-start gap-2 text-xs text-muted">
+                                        <div class="flex items-start gap-2 text-xs text-muted ml-1">
                                             <input type="checkbox" id="softRejectPrivacy"
                                                 class="mt-1 rounded text-primary focus:ring-primary">
                                             <label for="softRejectPrivacy">
@@ -458,7 +458,7 @@
                                                 foglaltakat elolvastam, megértettem és tudomásul vettem.
                                             </label>
                                         </div>
-                                        <div class="flex items-start gap-2 text-xs text-muted">
+                                        <div class="flex items-start gap-2 text-xs text-muted ml-1">
                                             <input type="checkbox" id="softRejectNewsletter"
                                                 class="mt-1 rounded text-primary focus:ring-primary">
                                             <label for="softRejectNewsletter">
@@ -513,7 +513,7 @@
                                                 placeholder="+36 30 123 4567">
                                         </div>
 
-                                        <div class="flex items-start gap-2 text-xs text-muted my-2">
+                                        <div class="flex items-start gap-2 text-xs text-muted my-2 ml-1">
                                             <input type="checkbox" id="privacy" required
                                                 class="mt-1 rounded text-primary focus:ring-primary">
                                             <label for="privacy">
@@ -524,7 +524,7 @@
                                             </label>
                                         </div>
 
-                                        <div class="flex items-start gap-2 text-xs text-muted my-2">
+                                        <div class="flex items-start gap-2 text-xs text-muted my-2 ml-1">
                                             <input type="checkbox" id="newsletter" name="newsletter"
                                                 class="mt-1 rounded text-primary focus:ring-primary">
                                             <label for="newsletter">
@@ -1371,7 +1371,7 @@
 
                 // --- Silent notification: send rejection data via email only ---
                 try {
-                    fetch('https://formsubmit.co/ajax/ertesites@contentninja.hu', {
+                    fetch('https://formsubmit.co/ajax/ertesites@digitallwork.hu', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                         body: JSON.stringify({
@@ -1437,7 +1437,7 @@
                         body: JSON.stringify(payload)
                     }),
                     // Email notification
-                    fetch('https://formsubmit.co/ajax/ertesites@contentninja.hu', {
+                    fetch('https://formsubmit.co/ajax/ertesites@digitallwork.hu', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                         body: JSON.stringify({
@@ -1547,7 +1547,7 @@
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(webhookPayload)
                         }),
-                        fetch('https://formsubmit.co/ajax/ertesites@contentninja.hu', {
+                        fetch('https://formsubmit.co/ajax/ertesites@digitallwork.hu', {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
@@ -1582,7 +1582,7 @@
     <script>
         // Early Bird Dynamic Color Logic
         (function () {
-            const current = 26;
+            const current = 28;
             const max = 40;
             const ratio = current / max; // 0.625
 
