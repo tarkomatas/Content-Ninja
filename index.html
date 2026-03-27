@@ -309,7 +309,7 @@
     <!-- ═══════════════════════════════════════
      HERO
 ═══════════════════════════════════════ -->
-    <section id="hero" class="hero-gradient py-20 md:py-28 px-4 md:px-10 overflow-hidden">
+    <section id="hero" class="hero-gradient py-10 md:py-28 px-4 md:px-10 overflow-hidden">
         <div class="max-w-[1200px] mx-auto">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
@@ -574,94 +574,165 @@
                 <h2 class="text-3xl md:text-4xl font-bold mb-4">Mit mondanak rólunk ügyfeleink?</h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="relative">
+                <div class="overflow-hidden" id="ti-viewport">
+                    <div class="flex" style="gap:2rem" id="ti-track">
 
-                <!-- T1 -->
-                <div
-                    class="flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all">
-                    <div class="mb-4">
-                        <span class="material-symbols-outlined text-primary/10 text-[56px]"
-                            style="font-variation-settings:'FILL' 1">format_quote</span>
-                    </div>
-                    <div class="flex gap-0.5 mb-4 -mt-2">
-                        <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
-                            class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
-                            class="text-yellow-400">★</span>
-                    </div>
-                    <p class="text-body italic mb-6 leading-relaxed flex-1">
-                        „Rengeteg időt spórol azzal, hogy terméklink alapján magától generál szöveget, képet és
-                        automatikusan posztol is. Nagy segítség!"
-                    </p>
-                    <div class="flex items-center gap-3 mt-auto">
-                        <div
-                            class="w-11 h-11 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm uppercase">
-                            Sz</div>
-                        <div>
-                            <p class="font-bold text-dark text-sm">Szabad Mária</p>
-                            <p class="text-xs text-muted">Károlyi-plast webáruház</p>
+                        <!-- T1 -->
+                        <div class="ti-card flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all" style="flex-shrink:0">
+                            <div class="mb-4">
+                                <span class="material-symbols-outlined text-primary/10 text-[56px]" style="font-variation-settings:'FILL' 1">format_quote</span>
+                            </div>
+                            <div class="flex gap-0.5 mb-4 -mt-2">
+                                <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
+                            </div>
+                            <p class="text-body italic mb-6 leading-relaxed flex-1">„Rengeteg időt spórol azzal, hogy terméklink alapján magától generál szöveget, képet és automatikusan posztol is. Nagy segítség!"</p>
+                            <div class="flex items-center gap-3 mt-auto">
+                                <div class="w-11 h-11 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm uppercase">Sz</div>
+                                <div>
+                                    <p class="font-bold text-dark text-sm">Szabad Mária</p>
+                                    <p class="text-xs text-muted">Károlyi-plast webáruház</p>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- T2 -->
+                        <div class="ti-card flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all" style="flex-shrink:0">
+                            <div class="mb-4">
+                                <span class="material-symbols-outlined text-primary/10 text-[56px]" style="font-variation-settings:'FILL' 1">format_quote</span>
+                            </div>
+                            <div class="flex gap-0.5 mb-4 -mt-2">
+                                <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
+                            </div>
+                            <p class="text-body italic mb-6 leading-relaxed flex-1">„Kevés időm jut marketingre, de ezzel mégis tudok rendszeresen posztolni. Tömegesen generál tartalmakat, témákat is javasol magától, a videós funkciói pedig egyre jobbak. Komoly időmegtakarítás."</p>
+                            <div class="flex items-center gap-3 mt-auto">
+                                <div class="w-11 h-11 rounded-full bg-primary/70 flex items-center justify-center text-white font-bold text-sm uppercase">L</div>
+                                <div>
+                                    <p class="font-bold text-dark text-sm">Luca Márió</p>
+                                    <p class="text-xs text-muted">PanDani.hu Játékbolt és webshop</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- T3 -->
+                        <div class="ti-card flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all" style="flex-shrink:0">
+                            <div class="mb-4">
+                                <span class="material-symbols-outlined text-primary/10 text-[56px]" style="font-variation-settings:'FILL' 1">format_quote</span>
+                            </div>
+                            <div class="flex gap-0.5 mb-4 -mt-2">
+                                <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
+                            </div>
+                            <p class="text-body italic mb-6 leading-relaxed flex-1">„Nagyon tetszik! Végre látom a fényt az alagút végén, így lesznek posztjaim a korábbi semmihez képest :) Egyszóval zseniális! Pedig kerestem már eszközt a problémámra, de nem találtam ilyet..."</p>
+                            <div class="flex items-center gap-3 mt-auto">
+                                <div class="w-11 h-11 rounded-full bg-primary/50 flex items-center justify-center text-white font-bold text-sm uppercase">ÁK</div>
+                                <div>
+                                    <p class="font-bold text-dark text-sm">Ábrahám Kata</p>
+                                    <p class="text-xs text-muted">Yoga Bazaar webáruház</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- T4 -->
+                        <div class="ti-card flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all" style="flex-shrink:0">
+                            <div class="mb-4">
+                                <span class="material-symbols-outlined text-primary/10 text-[56px]" style="font-variation-settings:'FILL' 1">format_quote</span>
+                            </div>
+                            <div class="flex gap-0.5 mb-4 -mt-2">
+                                <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span class="text-yellow-400">★</span>
+                            </div>
+                            <p class="text-body italic mb-6 leading-relaxed flex-1">„Jelentősen gyorsítja a munkát és megkönnyíti a posztolást, ami eddig órákba telt. Egyedi promptokkal változatos tartalmakat tudunk gyártani, a közönség reakciói pedig eddig egyértelműen pozitívak. Hamarosan a többi vállalkozásunkban is elkezdjük használni."</p>
+                            <div class="flex items-center gap-3 mt-auto">
+                                <div class="w-11 h-11 rounded-full bg-primary/80 flex items-center justify-center text-white font-bold text-sm uppercase">SM</div>
+                                <div>
+                                    <p class="font-bold text-dark text-sm">Szmolár Márk</p>
+                                    <p class="text-xs text-muted">Inkness Kft.</p>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-
-                <!-- T2 -->
-                <div
-                    class="flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all">
-                    <div class="mb-4">
-                        <span class="material-symbols-outlined text-primary/10 text-[56px]"
-                            style="font-variation-settings:'FILL' 1">format_quote</span>
-                    </div>
-                    <div class="flex gap-0.5 mb-4 -mt-2">
-                        <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
-                            class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
-                            class="text-yellow-400">★</span>
-                    </div>
-                    <p class="text-body italic mb-6 leading-relaxed flex-1">
-                        „Kevés időm jut marketingre, de ezzel mégis tudok rendszeresen posztolni. Tömegesen generál
-                        tartalmakat, témákat is javasol magától, a videós funkciói pedig egyre jobbak. Komoly
-                        időmegtakarítás."
-                    </p>
-                    <div class="flex items-center gap-3 mt-auto">
-                        <div
-                            class="w-11 h-11 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm uppercase">
-                            L</div>
-                        <div>
-                            <p class="font-bold text-dark text-sm">Luca Márió</p>
-                            <p class="text-xs text-muted">PanDani.hu Játékbolt és webshop</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- T3 -->
-                <div
-                    class="flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all">
-                    <div class="mb-4">
-                        <span class="material-symbols-outlined text-primary/10 text-[56px]"
-                            style="font-variation-settings:'FILL' 1">format_quote</span>
-                    </div>
-                    <div class="flex gap-0.5 mb-4 -mt-2">
-                        <span class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
-                            class="text-yellow-400">★</span><span class="text-yellow-400">★</span><span
-                            class="text-yellow-400">★</span>
-                    </div>
-                    <p class="text-body italic mb-6 leading-relaxed flex-1">
-                        „Nagyon tetszik! Végre látom a fényt az alagút végén, így lesznek posztjaim a korábbi semmihez
-                        képest :) Egyszóval zseniális! Pedig kerestem már eszközt a problémámra, de nem találtam
-                        ilyet..."
-                    </p>
-                    <div class="flex items-center gap-3 mt-auto">
-                        <div
-                            class="w-11 h-11 rounded-full bg-primary flex items-center justify-center text-white font-bold text-sm uppercase">
-                            ÁK</div>
-                        <div>
-                            <p class="font-bold text-dark text-sm">Ábrahám Kata</p>
-                            <p class="text-xs text-muted">Yoga Bazaar webáruház</p>
-                        </div>
-                    </div>
-                </div>
-
+                <div class="flex justify-center gap-3 mt-10" id="ti-dots"></div>
             </div>
         </div>
     </section>
+    <script>
+    (function () {
+        var track = document.getElementById('ti-track');
+        var viewport = document.getElementById('ti-viewport');
+        var dotsContainer = document.getElementById('ti-dots');
+        var cards = track.querySelectorAll('.ti-card');
+        var GAP = 32;
+        var current = 0;
+        var autoTimer;
+
+        function getVisible() {
+            return window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1;
+        }
+
+        function getTotal() {
+            return Math.max(1, cards.length - getVisible() + 1);
+        }
+
+        function buildDots() {
+            dotsContainer.innerHTML = '';
+            var total = getTotal();
+            for (var i = 0; i < total; i++) {
+                (function (idx) {
+                    var btn = document.createElement('button');
+                    btn.style.cssText = 'border:none;cursor:pointer;border-radius:9999px;transition:all 0.3s;height:10px;';
+                    btn.style.background = idx === current ? '#6c5ce7' : 'rgba(108,92,231,0.3)';
+                    btn.style.width = idx === current ? '24px' : '10px';
+                    btn.addEventListener('click', function () { goTo(idx); resetTimer(); });
+                    dotsContainer.appendChild(btn);
+                })(i);
+            }
+        }
+
+        function layout() {
+            var vis = getVisible();
+            var vw = viewport.offsetWidth;
+            var cw = (vw - GAP * (vis - 1)) / vis;
+            for (var i = 0; i < cards.length; i++) {
+                cards[i].style.width = cw + 'px';
+            }
+            current = Math.min(current, getTotal() - 1);
+            buildDots();
+            goTo(current, false);
+        }
+
+        function goTo(index, animate) {
+            if (animate === undefined) animate = true;
+            current = Math.max(0, Math.min(index, getTotal() - 1));
+            var cw = parseFloat(cards[0].style.width);
+            var offset = current * (cw + GAP);
+            track.style.transition = animate ? 'transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none';
+            track.style.transform = 'translateX(-' + offset + 'px)';
+            buildDots();
+        }
+
+        function next() {
+            goTo(current + 1 < getTotal() ? current + 1 : 0);
+        }
+
+        function resetTimer() {
+            clearInterval(autoTimer);
+            autoTimer = setInterval(next, 5000);
+        }
+
+        layout();
+        resetTimer();
+
+        var resizeTimer;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(layout, 100);
+        });
+
+        viewport.addEventListener('mouseenter', function () { clearInterval(autoTimer); });
+        viewport.addEventListener('mouseleave', resetTimer);
+    })();
+    </script>
 
 
     <!-- ═══════════════════════════════════════
