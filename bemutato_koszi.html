@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿﻿<!DOCTYPE html>
 <html lang="hu">
 
 <head>
@@ -13,7 +13,7 @@
 
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>KĂ¶szĂ¶njĂĽk! - Content Ninja</title>
+    <title>Köszönjük! - Content Ninja</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
@@ -117,9 +117,9 @@
                             </div>
                             <div>
                                 <h1 class="text-2xl md:text-3xl font-bold text-dark tracking-[-0.02em] leading-tight">
-                                    VĂˇlassz egy szabad idĹ‘pontot
+                                    Válassz egy szabad időpontot
                                 </h1>
-                                <p class="text-muted text-sm mt-0.5">Online bemutatĂł â€“ dĂ­jmentes, kb. 20 perc</p>
+                                <p class="text-muted text-sm mt-0.5">Online bemutató – díjmentes, kb. 20 perc</p>
                             </div>
                         </div>
 
@@ -129,8 +129,8 @@
                             <span class="material-symbols-outlined text-green-500 text-[18px]"
                                 style="font-variation-settings:'FILL' 1">check_circle</span>
                             <div>
-                                <p class="font-semibold text-green-700 text-sm leading-tight">KĂ¶szi a kitĂ¶ltĂ©st!</p>
-                                <p class="text-green-600 text-xs mt-0.5">A kĂ¶vetkezĹ‘ lĂ©pĂ©s, hogy idĹ‘pontot foglalj.</p>
+                                <p class="font-semibold text-green-700 text-sm leading-tight">Köszi a kitöltést!</p>
+                                <p class="text-green-600 text-xs mt-0.5">A következő lépés, hogy időpontot foglalj.</p>
                             </div>
                         </div>
 
@@ -151,23 +151,23 @@
 
     <!-- Footer -->
     <footer class="py-8 text-center text-muted text-sm border-t border-border bg-card mt-4">
-        <p>Copyright Â© contentninja.hu | 2026</p>
+        <p>Copyright © contentninja.hu | 2026</p>
     </footer>
 
     <script src="assets/cookie.js"></script>
     <script>
-            // Lead mĂ©rĂ©s logika - javĂ­tott verziĂł
+            // Lead mérés logika - javított verzió
             (function () {
                 const urlParams = new URLSearchParams(window.location.search);
                 const isLead = urlParams.get("lead") === "1";
 
                 if (!isLead) return;
 
-                console.log("Lead paramĂ©ter Ă©szlelve, pixel tracking indul...");
+                console.log("Lead paraméter észlelve, pixel tracking indul...");
 
                 let leadTracked = false;
                 let attempts = 0;
-                const maxAttempts = 40; // 40 * 500ms = 20 mĂˇsodperc max vĂˇrakozĂˇs
+                const maxAttempts = 40; // 40 * 500ms = 20 másodperc max várakozás
 
                 function trackLead() {
                     if (leadTracked) return;
@@ -175,30 +175,30 @@
                     attempts++;
                     console.log(`Lead tracking attempt ${attempts}/${maxAttempts}`);
 
-                    // Ha a pixel elĂ©rhetĹ‘, track-eljĂĽk
+                    // Ha a pixel elérhető, track-eljük
                     if (typeof fbq === 'function') {
                         try {
                             fbq('track', 'Lead');
                             leadTracked = true;
-                            console.log("âś… Facebook Lead event sikeresen elkĂĽldve!");
+                            console.log("✅ Facebook Lead event sikeresen elküldve!");
                             return true;
                         } catch (e) {
                             console.error("Pixel tracking hiba:", e);
                         }
                     }
 
-                    // Ha elĂ©rtĂĽk a max prĂłbĂˇlkozĂˇst, ĂˇllĂ­tsuk le
+                    // Ha elértük a max próbálkozást, állítsuk le
                     if (attempts >= maxAttempts) {
-                        console.log("âš ď¸Ź Lead tracking timeout - pixel nem tĂ¶ltĹ‘dĂ¶tt be (consent hiĂˇny vagy adblock)");
-                        return true; // ĂllĂ­tsuk le a retry-t
+                        console.log("⚠️ Lead tracking timeout - pixel nem töltődött be (consent hiány vagy adblock)");
+                        return true; // Állítsuk le a retry-t
                     }
 
-                    return false; // Folytassuk a prĂłbĂˇlkozĂˇst
+                    return false; // Folytassuk a próbálkozást
                 }
 
-                // ElsĹ‘ prĂłbĂˇlkozĂˇs azonnal
+                // Első próbálkozás azonnal
                 if (!trackLead()) {
-                    // Ha nem sikerĂĽlt, ĂĽtemezett ĂşjraprĂłbĂˇlkozĂˇs
+                    // Ha nem sikerült, ütemezett újrapróbálkozás
                     const checkInterval = setInterval(() => {
                         if (trackLead()) {
                             clearInterval(checkInterval);
