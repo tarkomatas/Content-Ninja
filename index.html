@@ -66,7 +66,10 @@
     </script>
 
     <style>
+        *, *::before, *::after { box-sizing: border-box; }
+        html { margin: 0; padding: 0; background-color: #ffffff; }
         body {
+            margin: 0;
             background-color: #f8f9fb;
             color: #4a4a68;
             letter-spacing: -0.01em;
@@ -91,7 +94,6 @@
             border-radius: 10px;
             border: none;
             transition: background 0.2s ease, transform 0.15s ease;
-            display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
@@ -111,7 +113,6 @@
             font-weight: 600;
             border-radius: 10px;
             transition: background 0.2s ease, transform 0.15s ease;
-            display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
@@ -227,7 +228,7 @@
     </style>
 </head>
 
-<body class="bg-light text-dark font-display overflow-x-hidden antialiased">
+<body class="bg-card text-dark font-display overflow-x-hidden antialiased">
 
     <!-- ═══════════════════════════════════════
      HEADER
@@ -251,11 +252,11 @@
             <!-- CTAs + hamburger -->
             <div class="flex items-center gap-3 shrink-0">
                 <a href="https://app.contentninja.hu" target="_blank"
-                    class="cta-secondary hidden sm:inline-flex px-4 py-2 text-sm">
+                    class="cta-secondary hidden md:inline-flex items-center gap-2 px-4 py-2 text-sm">
                     <span class="material-symbols-outlined text-[16px]">login</span>
                     Belépek
                 </a>
-                <a href="bemutato.html" class="cta-primary hidden sm:inline-flex px-4 py-2 text-sm">
+                <a href="bemutato.html" class="cta-primary hidden md:inline-flex items-center gap-2 px-4 py-2 text-sm">
                     <span class="material-symbols-outlined text-[16px]">calendar_month</span>
                     Bemutatót kérek
                 </a>
@@ -283,11 +284,11 @@
             </nav>
             <div class="flex flex-col gap-2 mt-4 pt-4 border-t border-border">
                 <a href="https://app.contentninja.hu" target="_blank"
-                    class="cta-secondary px-4 py-2.5 text-sm justify-center">
+                    class="cta-secondary flex items-center justify-center gap-2 px-4 py-2.5 text-sm">
                     <span class="material-symbols-outlined text-[16px]">login</span>
                     Belépek az appba
                 </a>
-                <a href="bemutato.html" class="cta-primary px-4 py-2.5 text-sm justify-center">
+                <a href="bemutato.html" class="cta-primary flex items-center justify-center gap-2 px-4 py-2.5 text-sm">
                     <span class="material-symbols-outlined text-[16px]">calendar_month</span>
                     Bemutatót kérek
                 </a>
@@ -325,7 +326,7 @@
                 <!-- Left: szöveg -->
                 <div class="flex flex-col gap-5 animate-fade-up">
                     <h1
-                        class="text-4xl md:text-5xl lg:text-[3.2rem] font-extrabold leading-[1.08] tracking-[-0.03em] text-dark">
+                        class="text-4xl md:text-[2.85rem] lg:text-5xl font-extrabold leading-[1.08] tracking-[-0.03em] text-dark">
                         Automatizáld be<br /><span class="text-primary">webshopod</span>
                         közösségi média posztolását
                     </h1>
@@ -417,10 +418,10 @@
                     beállítod, az AI a többit magától intézi.</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 relative">
 
                 <!-- Step 1 -->
-                <div class="bg-card rounded-[16px] border border-border p-8 shadow-card text-center relative">
+                <div class="bg-card rounded-[16px] border border-border p-5 sm:p-8 shadow-card text-center relative">
                     <div
                         class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-extrabold mx-auto mb-6 shadow-primary-glow">
                         1</div>
@@ -430,7 +431,7 @@
                 </div>
 
                 <!-- Step 2 -->
-                <div class="bg-card rounded-[16px] border border-border p-8 shadow-card text-center relative">
+                <div class="bg-card rounded-[16px] border border-border p-5 sm:p-8 shadow-card text-center relative">
                     <div
                         class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-extrabold mx-auto mb-6 shadow-primary-glow">
                         2</div>
@@ -440,7 +441,7 @@
                 </div>
 
                 <!-- Step 3 -->
-                <div class="bg-card rounded-[16px] border border-border p-8 shadow-card text-center relative">
+                <div class="bg-card rounded-[16px] border border-border p-5 sm:p-8 shadow-card text-center relative">
                     <div
                         class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-extrabold mx-auto mb-6 shadow-primary-glow">
                         3</div>
@@ -450,7 +451,7 @@
                 </div>
 
                 <!-- Step 4 -->
-                <div class="bg-card rounded-[16px] border border-border p-8 shadow-card text-center">
+                <div class="bg-card rounded-[16px] border border-border p-5 sm:p-8 shadow-card text-center">
                     <div
                         class="w-14 h-14 bg-primary rounded-full flex items-center justify-center text-white text-2xl font-extrabold mx-auto mb-6 shadow-primary-glow">
                         4</div>
@@ -484,7 +485,7 @@
                     <div class="flex" style="gap:2rem" id="ti-track">
 
                         <!-- T1 -->
-                        <div class="ti-card flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all"
+                        <div class="ti-card flex flex-col bg-light p-5 sm:p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all"
                             style="flex-shrink:0">
                             <div class="mb-4">
                                 <span class="material-symbols-outlined text-primary/10 text-[56px]"
@@ -510,7 +511,7 @@
                         </div>
 
                         <!-- T2 -->
-                        <div class="ti-card flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all"
+                        <div class="ti-card flex flex-col bg-light p-5 sm:p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all"
                             style="flex-shrink:0">
                             <div class="mb-4">
                                 <span class="material-symbols-outlined text-primary/10 text-[56px]"
@@ -536,7 +537,7 @@
                         </div>
 
                         <!-- T3 -->
-                        <div class="ti-card flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all"
+                        <div class="ti-card flex flex-col bg-light p-5 sm:p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all"
                             style="flex-shrink:0">
                             <div class="mb-4">
                                 <span class="material-symbols-outlined text-primary/10 text-[56px]"
@@ -562,7 +563,7 @@
                         </div>
 
                         <!-- T4 -->
-                        <div class="ti-card flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all"
+                        <div class="ti-card flex flex-col bg-light p-5 sm:p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all"
                             style="flex-shrink:0">
                             <div class="mb-4">
                                 <span class="material-symbols-outlined text-primary/10 text-[56px]"
@@ -589,7 +590,7 @@
                         </div>
 
                         <!-- T5 -->
-                        <div class="ti-card flex flex-col bg-light p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all" style="flex-shrink:0">
+                        <div class="ti-card flex flex-col bg-light p-5 sm:p-8 rounded-[16px] border border-border shadow-card hover:shadow-card-hover transition-all" style="flex-shrink:0">
                             <div class="mb-4">
                                 <span class="material-symbols-outlined text-primary/10 text-[56px]" style="font-variation-settings:'FILL' 1">format_quote</span>
                             </div>
@@ -705,7 +706,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
 
                 <!-- Standard -->
-                <div class="bg-card rounded-[16px] border border-border p-8 shadow-card">
+                <div class="bg-card rounded-[16px] border border-border p-5 sm:p-8 shadow-card">
                     <h3 class="text-xl font-bold mb-1 text-dark">Standard előfizetés</h3>
                     <p class="text-muted text-sm mb-6">A teljes automata marketing csomag</p>
                     <div class="flex items-baseline gap-1 mb-6 pb-6 border-b border-border">
@@ -757,7 +758,7 @@
                 </div>
 
                 <!-- Induló kedvezmény -->
-                <div class="bg-card rounded-[16px] border-2 border-primary p-8 pricing-featured relative">
+                <div class="bg-card rounded-[16px] border-2 border-primary p-5 sm:p-8 pricing-featured relative">
                     <div
                         class="absolute top-0 right-0 bg-primary text-white text-xs font-bold px-4 py-1.5 rounded-bl-[14px] uppercase tracking-wide">
                         Korai regisztráció
@@ -822,7 +823,7 @@
 
                 <div class="faq-item bg-light rounded-[12px] border border-border overflow-hidden">
                     <button
-                        class="w-full flex items-center justify-between p-5 text-left font-semibold text-dark text-base gap-4"
+                        class="w-full flex items-center justify-between p-4 sm:p-5 text-left font-semibold text-dark text-base gap-4"
                         onclick="toggleFaq(this)">
                         Mi az a Content Ninja?
                         <span class="material-symbols-outlined faq-icon text-primary shrink-0 text-[20px]">add</span>
@@ -837,7 +838,7 @@
 
                 <div class="faq-item bg-light rounded-[12px] border border-border overflow-hidden">
                     <button
-                        class="w-full flex items-center justify-between p-5 text-left font-semibold text-dark text-base gap-4"
+                        class="w-full flex items-center justify-between p-4 sm:p-5 text-left font-semibold text-dark text-base gap-4"
                         onclick="toggleFaq(this)">
                         Hogyan működik a Content Ninja AI tartalomgyártás?
                         <span class="material-symbols-outlined faq-icon text-primary shrink-0 text-[20px]">add</span>
@@ -853,7 +854,7 @@
 
                 <div class="faq-item bg-light rounded-[12px] border border-border overflow-hidden">
                     <button
-                        class="w-full flex items-center justify-between p-5 text-left font-semibold text-dark text-base gap-4"
+                        class="w-full flex items-center justify-between p-4 sm:p-5 text-left font-semibold text-dark text-base gap-4"
                         onclick="toggleFaq(this)">
                         Milyen platformokra tud posztolni a Content Ninja?
                         <span class="material-symbols-outlined faq-icon text-primary shrink-0 text-[20px]">add</span>
@@ -866,7 +867,7 @@
 
                 <div class="faq-item bg-light rounded-[12px] border border-border overflow-hidden">
                     <button
-                        class="w-full flex items-center justify-between p-5 text-left font-semibold text-dark text-base gap-4"
+                        class="w-full flex items-center justify-between p-4 sm:p-5 text-left font-semibold text-dark text-base gap-4"
                         onclick="toggleFaq(this)">
                         Kell-e marketing tudás a használatához?
                         <span class="material-symbols-outlined faq-icon text-primary shrink-0 text-[20px]">add</span>
@@ -880,7 +881,7 @@
 
                 <div class="faq-item bg-light rounded-[12px] border border-border overflow-hidden">
                     <button
-                        class="w-full flex items-center justify-between p-5 text-left font-semibold text-dark text-base gap-4"
+                        class="w-full flex items-center justify-between p-4 sm:p-5 text-left font-semibold text-dark text-base gap-4"
                         onclick="toggleFaq(this)">
                         Mennyibe kerül a Content Ninja előfizetés?
                         <span class="material-symbols-outlined faq-icon text-primary shrink-0 text-[20px]">add</span>
@@ -894,7 +895,7 @@
 
                 <div class="faq-item bg-light rounded-[12px] border border-border overflow-hidden">
                     <button
-                        class="w-full flex items-center justify-between p-5 text-left font-semibold text-dark text-base gap-4"
+                        class="w-full flex items-center justify-between p-4 sm:p-5 text-left font-semibold text-dark text-base gap-4"
                         onclick="toggleFaq(this)">
                         Megőrzi a Content Ninja a márkám hangnemét és stílusát?
                         <span class="material-symbols-outlined faq-icon text-primary shrink-0 text-[20px]">add</span>
