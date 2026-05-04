@@ -366,19 +366,19 @@
                                 <div
                                     class="flex items-center gap-1.5 bg-light rounded-md px-2.5 py-1 border border-border shrink-0">
                                     <span class="text-xs font-bold text-muted">Foglalt:</span>
-                                    <span id="earlyBirdCount" class="text-sm font-bold text-primary">40</span>
+                                    <span id="earlyBirdCount" class="text-sm font-bold text-primary">46</span>
                                     <span class="text-xs font-bold text-muted">/ 60</span>
                                 </div>
                             </div>
                             <div class="w-full h-2 rounded-full bg-light overflow-hidden border border-border">
                                 <div id="earlyBirdBarNew"
                                     class="h-full rounded-full bg-primary transition-all duration-700 ease-out"
-                                    style="width: 66.6667%;"></div>
+                                    style="width: 76.6667%;"></div>
                             </div>
                             <div class="flex flex-wrap justify-between gap-x-2 mt-2">
                                 <p class="text-[11px] text-muted font-medium">Csak a korai regisztrálóknak, fix áron!
                                 </p>
-                                <span id="earlyBirdRemaining" class="text-[11px] font-bold text-primary">Már csak 20
+                                <span id="earlyBirdRemaining" class="text-[11px] font-bold text-primary">Már csak 14
                                     hely!</span>
                             </div>
                         </div>
@@ -1549,10 +1549,9 @@
             // Store for later use
             _qualifyData = { webshop, level, role, timing };
 
-            // Hard disqualify: no webshop OR internal team / agency handling posts
+            // Hard disqualify: no webshop OR agency handling posts
             const isHardRejected =
                 webshop === 'Nem, más típusú vállalkozásom van' ||
-                role === 'Belsős marketing csapat' ||
                 role === 'Külsős ügynökség';
 
             // Soft reject: no webshop yet OR timing not ideal (but otherwise OK)
@@ -1777,9 +1776,9 @@
     <script>
         // Early Bird Dynamic Color Logic
         (function () {
-            const current = 40;
+            const current = 46;
             const max = 60;
-            const ratio = current / max; // 0.6667
+            const ratio = current / max; // 0.7667
 
             // Color interpolation: green(0) -> amber(0.5) -> red(1)
             function getBarColor(r) {
