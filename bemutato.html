@@ -1590,9 +1590,10 @@
             // Store for later use
             _qualifyData = { webshop, level, role, timing };
 
-            // Hard disqualify: no webshop OR agency handling posts
+            // Hard disqualify: no webshop OR agency handling posts OR no marketing knowledge
             const isHardRejected =
                 webshop === 'Nem, más típusú vállalkozásom van' ||
+                level === 'Egyáltalán nem értünk semmit a témához' ||
                 role === 'Külsős ügynökség';
 
             // Soft reject: no webshop yet OR timing not ideal (but otherwise OK)
@@ -1610,10 +1611,14 @@
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                         body: JSON.stringify({
-                            '_subject': '⛔ [ELUTASÍTVA] AI Tartalomgyártás előszűrő',
+                            '_subject': level === 'Egyáltalán nem értünk semmit a témához'
+                                ? '⛔ [KIZÁRVA - nincs tématudás] AI Tartalomgyártás előszűrő'
+                                : '⛔ [ELUTASÍTVA] AI Tartalomgyártás előszűrő',
                             '_captcha': 'false',
                             '_template': 'table',
-                            'Státusz': 'ELUTASÍTVA (előszűrő alapján)',
+                            'Státusz': level === 'Egyáltalán nem értünk semmit a témához'
+                                ? 'KIZÁRVA (egyáltalán nem ért semmit a témához)'
+                                : 'ELUTASÍTVA (előszűrő alapján)',
                             'Van webshopja': webshop,
                             'Marketing szint': level,
                             'Ki csinálja a marketinget': role,
