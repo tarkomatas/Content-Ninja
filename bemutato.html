@@ -1643,30 +1643,19 @@
             if (isHardRejected) {
                 nextStep('rejected');
 
-                // --- Silent notification: send rejection data via email only ---
-                try {
-                    fetch('https://formsubmit.co/ajax/ertesites@digitallwork.hu', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                        body: JSON.stringify({
-                            '_subject': level === 'Egyáltalán nem értünk semmit a témához'
-                                ? '⛔ [KIZÁRVA - nincs tématudás] AI Tartalomgyártás előszűrő'
-                                : '⛔ [ELUTASÍTVA] AI Tartalomgyártás előszűrő',
-                            '_captcha': 'false',
-                            '_template': 'table',
-                            'Státusz': level === 'Egyáltalán nem értünk semmit a témához'
-                                ? 'KIZÁRVA (egyáltalán nem ért semmit a témához)'
-                                : 'ELUTASÍTVA (előszűrő alapján)',
-                            'Van webshopja': webshop,
-                            'Marketing szint': level,
-                            'Ki csinálja a marketinget': role,
-                            'Mikor aktuális': timing,
-                            'Kitöltés időpontja': new Date().toLocaleString('hu-HU'),
-                            'Forrás URL': window.location.href
-                        })
-                    }).catch(() => { });
-                } catch (e) { }
-                // --- End silent notification ---
+                fetch('https://hook.eu1.make.com/ihohtlulor66lvhouyoty9azbut7lzx7', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        statusz: 'hard_reject',
+                        submission_date: new Date().toISOString(),
+                        has_webshop: webshop,
+                        marketing_level: level,
+                        marketing_role: role,
+                        timing: timing,
+                        source_url: window.location.href
+                    })
+                }).catch(() => { });
 
             } else if (isSoftRejected) {
                 nextStep('soft-reject');
@@ -1707,33 +1696,11 @@
             };
 
             try {
-                await Promise.allSettled([
-                    // Webhook to Make.com (soft reject – separate webhook)
-                    fetch('https://hook.eu1.make.com/dbd8h6ba533577o15xq36mia3t8y5z6l', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    }),
-                    // Email notification
-                    fetch('https://formsubmit.co/ajax/ertesites@digitallwork.hu', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                        body: JSON.stringify({
-                            '_subject': '⏳ [SOFT REJECT – Videó kérés] AI Tartalomgyártás',
-                            '_captcha': 'false',
-                            '_template': 'table',
-                            'Státusz': 'Soft reject – bemutató videót kért',
-                            'Email': email,
-                            'Hírlevél feliratkozás': newsletterChecked ? 'Igen' : 'Nem',
-                            'Van webshopja': _qualifyData.webshop || '',
-                            'Marketing szint': _qualifyData.level || '',
-                            'Ki csinálja a marketinget': _qualifyData.role || '',
-                            'Mikor aktuális': _qualifyData.timing || '',
-                            'Kitöltés időpontja': new Date().toLocaleString('hu-HU'),
-                            'Forrás URL': window.location.href
-                        })
-                    })
-                ]);
+                await fetch('https://hook.eu1.make.com/ihohtlulor66lvhouyoty9azbut7lzx7', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ...payload, statusz: 'soft_reject' })
+                });
             } catch (e) { }
 
             nextStep('soft-reject-thanks');
@@ -1798,6 +1765,7 @@
                 // Prepare webhook payload
                 const newsletterChecked = document.getElementById('newsletter').checked;
                 const webhookPayload = {
+                    statusz: 'sikeres',
                     submission_date: new Date().toISOString(),
                     nev: cleanData['name'],
                     email: cleanData['email'],
@@ -1816,34 +1784,13 @@
                 formsubmitData['_captcha'] = 'false';
                 formsubmitData['_template'] = 'table';
 
-                // Send BOTH requests in parallel using Promise.allSettled
-                // This ensures both get a chance to complete before redirect
                 try {
-                    const results = await Promise.allSettled([
-                        fetch('https://hook.eu1.make.com/ihohtlulor66lvhouyoty9azbut7lzx7', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(webhookPayload)
-                        }),
-                        fetch('https://formsubmit.co/ajax/ertesites@digitallwork.hu', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json',
-                                'Accept': 'application/json'
-                            },
-                            body: JSON.stringify(formsubmitData)
-                        })
-                    ]);
-
-                    // Log results for debugging
-                    results.forEach((result, index) => {
-                        const name = index === 0 ? 'Webhook' : 'FormSubmit';
-                        if (result.status === 'fulfilled') {
-                            console.log(`${name} sent successfully`);
-                        } else {
-                            console.error(`${name} error:`, result.reason);
-                        }
+                    const result = await fetch('https://hook.eu1.make.com/ihohtlulor66lvhouyoty9azbut7lzx7', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(webhookPayload)
                     });
+                    console.log('Webhook sent:', result.ok);
 
                     // Always redirect after submission attempt (prevents re-submission)
                     window.location.href = "bemutato_koszi.html?lead=1";
