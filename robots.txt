@@ -1,4 +1,6 @@
+# A contentninja.hu átirányít a getcontentninja.com-ra.
+# Minden útvonal crawlolható marad, hogy a keresők lássák az átirányításokat.
 User-agent: *
-Disallow: /bemutato_koszi.html
+Allow: /
 
 Sitemap: https://contentninja.hu/sitemap.xml
